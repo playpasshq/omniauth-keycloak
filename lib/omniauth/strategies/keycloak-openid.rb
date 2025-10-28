@@ -105,7 +105,7 @@ module OmniAuth
                 super
             end
 
-            uid{ raw_info['sub'] }
+            uid { raw_info['sub'] }
 
             info do
             {
@@ -124,7 +124,7 @@ module OmniAuth
             end
 
             def raw_info
-                id_token_string = access_token.token
+                id_token_string = access_token['id_token']
                 jwks = JSON::JWK::Set.new(@certs)
                 id_token = JSON::JWT.decode id_token_string, jwks
                 id_token
